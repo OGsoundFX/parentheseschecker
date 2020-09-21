@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="app">
+  <head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <title>Parentheses Checker</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <meta charset="UTF-8">
+
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+      <style>
+        html, body
+        {
+            font-size: 1.1em;
+        }
+      </style>
+
+      <!-- load angular via CDN -->
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> -->
+      <script src="js/libs/angular.js"></script>
+  </head>
+  <body>
+
+  <header>
+		<nav class="navbar navbar-default">
+
+			<div class="navbar-header">
+				<!-- <a class="navbar-brand" href="/">AngularJS</a> -->
+        <a href="http://axonetiq.com" target="blank"> <img id="icon" src="favicon.ico" alt=""> </a>
+			</div>
+
+		</nav>
+	</header>
+
+  <div class="container">
+
+		<div ng-controller="ApiController as api">
+      <h1 id="title">Welcome to the Parentheses Checker!</h1>
+
+      <form id="form" ng-submit="api.getUser()">
+        <input placeholder="Enter your string here" id="input" type="text" ng-model="api.entry">
+        <br><br>
+        <button type="submit" class="submit">Submit</button>
+        <!-- <button type="button" onclick="document.getElementById('input').value = ''" class="clear">Clear entry</button> -->
+        <button type="button" ng-click="api.clear();">Clear entry</button>
+      </form>
+
+      <div class="grid">
+        <div class="titles">
+          <h2 class="border">Your input:</h2>
+          <h2 class="border">Result:</h2>
+          <h2 class="border" ng-hide="api.result.isValid === true || api.start === false">Preceeding:</h2>
+          <h2 class="border" ng-hide="api.result.isValid === true || api.start === false">Erroneos:</h2>
+        </div>
+        <div class="results2">
+          <h2 class="border">&nbsp;{{ api.entry }}</h2>
+          <!-- <h2 class="border color">&nbsp;{{ result }} </h2> -->
+          <h2 class="border"
+            ng-class="{ color: api.result.isValid === true }"
+            ng-show="api.result.isValid === true">
+            &nbsp; Valid </h2>
+          <h2 class="border color-red" ng-hide="api.result.isValid === true || api.start === false">&nbsp; Invalid </h2>
+          <h2 class="border" ng-show="api.start === false">&nbsp;</h2>
+          <h2 class="border" ng-hide="api.result.isValid === true || api.start === false">&nbsp;{{ api.result.errorDetails.erroneosParentheses | json }} </h2>
+          <h2 class="border" ng-hide="api.result.isValid === true || api.start === false">&nbsp;{{ api.result.errorDetails.preceedingParentheses | json }} </h2>
+        </div>
+      </div>
+    </div>
+
+<!--     <div class="todo" ng-controller="ApiController as api">
+      <form ng-submit="api.getUser()">
+        <input type="text" ng-model="api.entry">
+        <input type="submit">
+      </form>
+      <p ng-show="api.result.isValid === true"> Valid </p>
+      <p ng-show="api.result.isValid != true"> Invalid </p>
+      <p> Erroneos parentheses: {{ api.result.errorDetails.erroneosParentheses | json }} </p>
+      <p> Preceeding parentheses: {{ api.result.errorDetails.preceedingParentheses | json }} </p>
+    </div>
+ -->
+	</div>
+  <script src="js/app.js"></script>
+  <script src="js/ApiController.js"></script>
+  <script src="js/ApiService.js"></script>
+  </body>
+</html>
