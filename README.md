@@ -20,9 +20,9 @@ Add it and turn it on when using this app. Turn it off afterwards, otherwise it 
 
 - Connect to your Postman and make a ## POST request to the following url: localhost:3000/parentheses
 - Enter a request similar to (replace the string with your content that you want to test):
-## {
-##     "string": "(()"
-## }
+#### {
+####     "string": "(()"
+#### }
 - Send request
 
 
