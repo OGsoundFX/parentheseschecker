@@ -18,10 +18,11 @@ Add it and turn it on when using this app. Turn it off afterwards, otherwise it 
 
 ### 4) POSTMAN
 
-- Connect to your Postman and make a ## POST ## request to the following url: localhost:3000/parentheses
+- Connect to your Postman and make a ***POST*** request to the following url: localhost:3000/parentheses
 - Enter a request similar to (replace the string with your content that you want to test):
 #### { "string": "(()" }
 - Send request
 
 
-### 5) Final Product: https://parentheses-checker-19b52.web.app/
+### 5) Final Product:
+https://parentheses-checker-19b52.web.app/
